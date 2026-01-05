@@ -1,0 +1,95 @@
+function initTabNav() {
+  const tabMenu = document.querySelectorAll('[data-tab="menu"] li');
+  const tabContent = document.querySelectorAll('[data-tab="content"] section');
+
+  if (tabMenu.length && tabContent.length) {
+    tabContent[0].classList.add('ativo');
+    function ativeTab(index) {
+      tabContent.forEach((content) => {
+        content.classList.remove('ativo');
+      });
+      const animacaoAoShow = tabContent[index].dataset.anime;
+      tabContent[index].classList.add('ativo', animacaoAoShow);
+    }
+
+    tabMenu.forEach((itemMenu, index) => {
+      itemMenu.addEventListener('click', () => {
+        ativeTab(index);
+      });
+    });
+  }
+}
+
+initTabNav();
+
+function initAccordion() {
+  const accordionList = document.querySelectorAll(
+    '[data-accordion="accordion"] dt'
+  );
+  const activeClass = 'ativo';
+  if (accordionList.length) {
+    accordionList[0].classList.add(activeClass);
+    accordionList[0].nextElementSibling.classList.add(activeClass);
+
+    function ativeAccordion() {
+      this.classList.toggle(activeClass);
+      this.nextElementSibling.classList.toggle(activeClass);
+    }
+
+    accordionList.forEach((item) => {
+      item.addEventListener('click', ativeAccordion);
+    });
+  }
+}
+
+initAccordion();
+
+function initScrollSuave() {
+  const linkInterno = document.querySelectorAll(
+    '[data-menu="suave"] a[href^="#"]'
+  );
+
+  function scrollSection(e) {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute('href');
+    const section = document.querySelector(href);
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+  // 1 maneira, calcula o topo do elemento
+  //   const topo = section.offsetTop;
+  //   window.scrollTo({
+  //     top: topo,
+  //     behavior: 'smooth',
+  //   });
+  // }
+
+  linkInterno.forEach((link) => {
+    link.addEventListener('click', scrollSection);
+  });
+}
+
+initScrollSuave();
+
+function initScrollSite() {
+  const sections = document.querySelectorAll('[data-anime="scroll"]');
+  if (sections.length) {
+    const metadeWindow = window.innerHeight * 0.6;
+
+    function animaScroll() {
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const isSectionVisible = sectionTop - metadeWindow < 0;
+        if (isSectionVisible) {
+          section.classList.add('ativo');
+        }
+      });
+    }
+    animaScroll();
+
+    window.addEventListener('scroll', animaScroll);
+  }
+}
+initScrollSite();
