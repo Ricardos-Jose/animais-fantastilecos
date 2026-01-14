@@ -1,0 +1,19 @@
+// const sectionsAnimais = document.querySelectorAll('.animais-descricao section');
+// console.log(sectionsAnimais);
+
+import initScrollSuave from './modules/scroll-suave.js';
+import initScrollSite from './modules/animacao-scroll.js';
+import initAccordion from './modules/accordion.js';
+import initTabNav from './modules/animacao-tabnav-menu.js';
+import initModal from './modules/modal.js';
+import initTooltip from './modules/tooltip.js';
+import initDropDown from './modules/dropdown.js';
+import initMobile from './modules/mobile-menu.js';
+initScrollSuave();
+initScrollSite();
+initAccordion();
+initTabNav();
+initModal();
+initTooltip();
+initDropDown();
+initMobile();
