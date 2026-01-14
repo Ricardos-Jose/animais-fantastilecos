@@ -9,7 +9,7 @@ import initModal from './modules/modal.js';
 import initTooltip from './modules/tooltip.js';
 import initDropDown from './modules/dropdown.js';
 import initMobile from './modules/mobile-menu.js';
-
+import initNumeros from './modules/numeros.js';
 initScrollSuave();
 initScrollSite();
 initAccordion();
@@ -18,3 +18,4 @@ initModal();
 initTooltip();
 initDropDown();
 initMobile();
+initNumeros();
